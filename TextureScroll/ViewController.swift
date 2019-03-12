@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     
     func setupTableNode(){
         tableNode.dataSource = self
-        tableNode.inverted = false
         view.addSubnode(tableNode)
         
         for subview in view.subviews {
@@ -43,7 +42,10 @@ class ViewController: UIViewController {
             self.messages.append("TEST 1")
             self.tableNode.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
 
-            self.messages.append("TEST 2")
+            self.messages.insert("TEST 2", at: 0)
+            self.tableNode.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
+            
+            self.messages.insert("TEST 3", at: 0)
             self.tableNode.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
             
         }
