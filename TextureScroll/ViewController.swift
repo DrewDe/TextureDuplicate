@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     func setupTableNode(){
         tableNode.dataSource = self
+        tableNode.inverted = false
         view.addSubnode(tableNode)
         
         for subview in view.subviews {
@@ -36,11 +37,15 @@ class ViewController: UIViewController {
     }
     
     func startTimer(){
-        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) {[weak self] (timer) in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) {[weak self] (timer) in
             guard let self = self else { return }
-            self.messages.insert("\(self.currentIndex)", at: 0)
+
+            self.messages.append("TEST 1")
             self.tableNode.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
-            self.currentIndex += 1
+
+            self.messages.append("TEST 2")
+            self.tableNode.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
+            
         }
     }
 }

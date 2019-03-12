@@ -16,7 +16,9 @@ class CellNode: ASCellNode {
     init(message: String) {
         super.init()
         automaticallyManagesSubnodes = true
-        messageTextNode.attributedText = NSAttributedString(string: message)
+        let attributed = NSMutableAttributedString(string: message)
+        attributed.setAttributes([ .font: UIFont.boldSystemFont(ofSize: 14)], range: NSMakeRange(0, message.count))
+        messageTextNode.attributedText = attributed
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
